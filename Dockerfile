@@ -1,8 +1,7 @@
 FROM gradle:8.3 AS build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
+ADD . .
 RUN gradle build
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /home/gradle/src/build/libs/test-deploy-*.jar /app/test-deploy.jar
-ENTRYPOINT ["java","-jar","/app/test-deploy.jar"]
+COPY --from=build /home/gradle/build/libs/test-deploy-*.jar /app/app.jar
+ENTRYPOINT ["java","-jar","/app/app.jar"]
