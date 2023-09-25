@@ -22,8 +22,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("io.github.microutils:kotlin-logging:1.5.9")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4")
 }
 
 tasks.withType<KotlinCompile> {
@@ -35,4 +36,8 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = false
 }
