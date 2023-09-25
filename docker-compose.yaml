@@ -1,24 +1,14 @@
-version: "3"
+version: "3.9"
 services:
    service0:
       build:
          context: ${TEST_SRC_DIR}
-         dockerfile: Dockerfile
-      expose:
-         - 5000
+         dockerfile: ./Dockerfile
       ports:
-         - 5000:5000
+         - "5000:5000"
       environment:
          - VIRTUAL_HOST=${SERVICE_DOMAIN}
          - LETSENCRYPT_HOST=${SERVICE_DOMAIN}
          - VIRTUAL_PORT=5000
          - PORT=5000
-      networks:
-         - back
-         - reverse-proxy
-networks:
-   reverse-proxy:
-      external:
-         name: reverse-proxy
-   back:
-      driver: bridge
+
