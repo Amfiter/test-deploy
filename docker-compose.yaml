@@ -1,11 +1,9 @@
 version: "3"
 services:
-   test-deploy:
+   service0:
       build:
          context: ${TEST_SRC_DIR}
          dockerfile: Dockerfile
-      ports:
-         - "5000:5000"
       expose:
          - 5000
       environment:
