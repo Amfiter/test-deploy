@@ -2,8 +2,7 @@ version: "3"
 services:
    service0:
       build:
-         context: ${TEST_SRC_DIR}
-         dockerfile: Dockerfile
+         context: ./
       expose:
          - 5000
       ports:
