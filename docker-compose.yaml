@@ -1,6 +1,6 @@
 version: "3"
 services:
-   service0:
+   test-deploy:
       build:
          context: ${TEST_SRC_DIR}
          dockerfile: Dockerfile
@@ -15,6 +15,10 @@ services:
          - PORT=5000
       networks:
          - back
+         - reverse-proxy
 networks:
+   reverse-proxy:
+      external:
+         name: reverse-proxy
    back:
       driver: bridge
