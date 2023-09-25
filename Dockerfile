@@ -1,4 +1,4 @@
-FROM gradle:8.3 AS build
+FROM gradle:8.2.1 AS build
 ADD . .
 RUN gradle build
 
