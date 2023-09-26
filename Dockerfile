@@ -1,7 +1,13 @@
-FROM gradle:8.2.1 AS build
-ADD . .
-RUN gradle build
-
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /home/gradle/build/libs/test-deploy-*.jar /app/app.jar
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+
+# Create a directory
+WORKDIR /app
+
+# Copy all the files from the current directory to the image
+COPY . .
+
+# build the project avoiding tests
+RUN ./gradlew clean build -x test
+
+# Run the jar file
+CMD ["java", "-jar", "./build/libs/test-deploy-0.0.1-SNAPSHOT.jar"]

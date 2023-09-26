@@ -1,9 +1,10 @@
 version: "3.3"
 services:
-   service0:
-      container_name: backend_hbe
+   kotlinapp:
+      container_name: kotlinapp
       build:
-         context: ../test-deploy
+         context: .
+         dockerfile: Dockerfile
       ports:
          - "5000:5000"
       environment:
