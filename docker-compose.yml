@@ -10,6 +10,7 @@ services:
       environment:
          - JAVA_OPTS=-Xmx256m -Xms256m -Djava.awt.headless=true
          - VIRTUAL_HOST=${SERVICE_DOMAIN}
+         - lalalalalalla
          - LETSENCRYPT_HOST=${SERVICE_DOMAIN}
          - VIRTUAL_PORT=5000
          - PORT=5000
